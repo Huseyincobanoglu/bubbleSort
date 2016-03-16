@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include <time.h>
+int main(){
+
+  int s,temp,i,j,k,dizi[10000];
+  int karsilastirma=0,yerdegistirme=0;
+  printf("Dizinin eleman sayisini giriniz:");
+  scanf("%d",&s);
+
+
+  srand(time(NULL));
+  for(k=0;k<s;k++){
+                   dizi[k]=rand()%100;
+  }
+
+  //Bubble Sort Algoritması
+  clock_t start = clock();
+  for(i=s-2;i>=0;i--){
+      for(j=0;j<=i;j++){
+            karsilastirma+=1;
+           if(dizi[j]>dizi[j+1]){
+               temp=dizi[j];
+              dizi[j]=dizi[j+1];
+              dizi[j+1]=temp;
+              yerdegistirme+=1;
+           }
+      }
+  }
+  clock_t stop = clock();
+    double elapsed = (double)(stop - start) * 1000.0 / CLOCKS_PER_SEC;
+
+
+  printf("Sirali Hali: ");
+  for(i=0;i<s;i++)
+      printf(" %d\n",dizi[i]);
+
+printf("Gecen sure: %f\n", elapsed);
+printf("karsilastirma= %d\n",karsilastirma);
+printf("yerdegistirme= %d\n",yerdegistirme);
+
+  return 0;
+}
+
